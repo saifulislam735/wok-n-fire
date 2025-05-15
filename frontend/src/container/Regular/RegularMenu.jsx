@@ -25,7 +25,7 @@ const RegularMenu = () => {
   // Chatbot Flow States
   // ---------------------------
   const [chatMessages, setChatMessages] = useState([]);
-  const [showSummary, setShowSummary] = useState(false); 
+  const [showSummary, setShowSummary] = useState(false);
   const [inBYOFlow, setInBYOFlow] = useState(false);
   const [byoStep, setByoStep] = useState(0);
 
@@ -43,19 +43,57 @@ const RegularMenu = () => {
   // ---------------------------
   const menuData = {
     friesAndChips: [
-      { name: 'Fried Chicken Drumsticks', price: 5.45 },
-      { name: 'Fried Chicken Wings', price: 5.45 },
-      { name: 'Cheesy Chips', price: 3.95 },
-      { name: 'Plain Chips', price: 2.95 },
+      { name: 'Fried Chicken Drumsticks', price: 6.45 }, // Updated price from image
+      { name: 'Fried Chicken Wings', price: 5.45 }, // Matches image
+      { name: 'Fried Chicken Tender', price: 6.45 }, // Added from image
+      { name: 'Cheesy Chips', price: 4.25 }, // Updated price from image
+      { name: 'Plain Chips', price: 2.25 }, // Updated price from image
+      { name: 'Masala Chips', price: 4.45 }, // Added from image
+      { name: 'Nacho Chips', price: 4.45 }, // Added from image
+      { name: 'Meal Deal [1 Drumstick\n, 1 Wings\n, 1 Chicken Tender\n, Reg. Chips & Can Drink]', price: 9.95 }, // From third image
+
     ],
     cornDog: [
-      { name: 'Original Corn Dog', price: 4.50 },
-      { name: 'Half & Half Corn Dog', price: 4.50 },
-      { name: 'Potato Corn Dog', price: 4.95 },
-      { name: 'Potato & Mozzarella Corn Dog', price: 4.95 },
+      { name: 'Original Corn Dog', price: 4.50 }, // Matches image
+      { name: 'Half & Half Corn Dog', price: 4.50 }, // Matches image
+      { name: 'Potato Corn Dog', price: 4.95 }, // Matches image
+      { name: 'Potato & Mozzarella Corn Dog', price: 4.95 }, // Matches image
     ],
     drinks: [
-      { name: 'A Selection of Cold Drinks & Water', price: 1.70 },
+      { name: 'A Selection of Cold Drinks & Water', price: 1.70 }, // Unchanged
+    ],
+    stirFry: [
+      { name: 'Chicken Wings', price: 2.95 },
+      { name: 'Beef', price: 2.95 },
+      { name: 'Roast Duck', price: 2.95 },
+      { name: 'Mixed Seafood', price: 2.95 },
+      { name: 'Prawn', price: 2.95 },
+      { name: 'King Prawn', price: 3.45 },
+      { name: 'Broccoli', price: 2.25 },
+      { name: 'Vegetable Stir Fry with Noodles/Rice', price: 9.95 },
+    ],
+    curry: [
+      { name: 'Chicken Fire Curry with Steamed Rice', price: 11.45 }, // From fifth image
+      { name: 'Beef Fire Curry with Steamed Rice', price: 13.45 }, // From fifth image
+      { name: 'King Prawns Fire Curry with Steamed Rice', price: 13.45 }, // From fifth image
+      { name: 'Duck Fire Curry with Steamed Rice', price: 13.45 }, // From fifth image
+      { name: 'Mixed Veg Fire Curry', price: 10.95 }, // From fifth image
+    ],
+    mealDeal: [
+      { name: 'Meal Deal (1 Drumstick, 1 Wings, 1 Chicken Tender, Reg. Chips & Can Drink)', price: 9.95 }, // From third image
+    ],
+    sauces: [ // New category for sauces to pair with stir-fry dishes
+      { name: 'Teriyaki', price: 0.00 }, // Price assumed as included with stir-fry
+      { name: 'Spicy Teriyaki', price: 0.00 },
+      { name: 'Sweet & Sour', price: 0.00 },
+      { name: 'Yellow Curry & Coconut', price: 0.00 },
+      { name: 'Dark Soya & Ginger', price: 0.00 },
+      { name: 'Asian Spice Sauce', price: 0.00 },
+      { name: 'Hot Asia', price: 0.00 },
+      { name: 'Garlic & Black Pepper', price: 0.00 },
+      { name: 'Peanut Sauce', price: 0.00 },
+      { name: 'Soya Sauce', price: 0.00 },
+      { name: 'Sweet Chilli', price: 0.00 },
     ],
   };
 
@@ -203,6 +241,10 @@ const RegularMenu = () => {
     { key: 'friesAndChips', label: 'Fries and Chips' },
     { key: 'cornDog', label: 'Corn Dog' },
     { key: 'drinks', label: 'Drinks' },
+    { key: 'stirFry', label: 'Stir Fry' }, // For Chicken Wings, Beef, Roast Duck, Mixed Seafood, Prawn, King Prawn, Broccoli, Vegetable Stir Fry
+    { key: 'curry', label: 'Fire Curry' }, // For Chicken, Beef, King Prawns, Duck, and Mixed Veg Fire Curries
+    { key: 'mealDeal', label: 'Meal Deals' }, // For the Meal Deal (Drumstick, Wings, Tender, Chips & Drink)
+    { key: 'sauces', label: 'Choose Your Sauce' }, // New category for sauces
   ];
 
   // On page load, we start the conversation so chatbot is open immediately
@@ -516,7 +558,7 @@ const RegularMenu = () => {
 
           <div className="chatbot-footer">
             {/* NEW Reset button */}
-            <button 
+            <button
               className="chatbot-reset"
               onClick={resetChat}
               style={{ marginRight: '10px' }}
@@ -569,6 +611,63 @@ const RegularMenu = () => {
                 <div className="menu-card" key={index}>
                   <h3>{item.name}</h3>
                   <p>£{item.price.toFixed(2)}</p>
+                  <button onClick={() => handleSelectItem(item)}>
+                    {isSelected ? 'Remove' : 'Select'}
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+      <div className="menu-row">
+        <div className="menu-section">
+          <h2 className="menu-section-title">Special Fire Curry</h2>
+          <div className="menu-items">
+            {menuData.curry.map((item, index) => {
+              const isSelected = selectedItems.some((i) => i.name === item.name);
+              return (
+                <div className="menu-card" key={index}>
+                  <h3>{item.name}</h3>
+                  <p>£{item.price.toFixed(2)}</p>
+                  <button onClick={() => handleSelectItem(item)}>
+                    {isSelected ? 'Remove' : 'Select'}
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="menu-section">
+          <h2 className="menu-section-title">Stir Fry</h2>
+          <div className="menu-items">
+            {menuData.stirFry.map((item, index) => {
+              const isSelected = selectedItems.some((i) => i.name === item.name);
+              return (
+                <div className="menu-card" key={index}>
+                  <h3>{item.name}</h3>
+                  <p>£{item.price.toFixed(2)}</p>
+                  <button onClick={() => handleSelectItem(item)}>
+                    {isSelected ? 'Remove' : 'Select'}
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      <div className="menu-row-3">
+        <div className="menu-section">
+          <h2 className="menu-section-title">Choose Your Sauce</h2>
+          <div className="menu-items">
+            {menuData.sauces.map((item, index) => {
+              const isSelected = selectedItems.some((i) => i.name === item.name);
+              return (
+                <div className="menu-card" key={index}>
+                  <h3>{item.name}</h3>
+                  {/* <p>£{item.price.toFixed(2)}</p> */}
                   <button onClick={() => handleSelectItem(item)}>
                     {isSelected ? 'Remove' : 'Select'}
                   </button>

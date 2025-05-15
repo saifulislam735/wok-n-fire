@@ -330,15 +330,11 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 600px;
+  width: 600px; /* Original width */
   max-height: 500px;
-  
-  /* First background: Semi-transparent overlay */
   background: linear-gradient(rgba(210,9,28,0.4), rgba(0, 0, 0, 0.4)), 
               url("../../assets/CHATBOX-01.png") no-repeat center center;
-              
-  background-size: contain; /* First applies to overlay, second to image */
-
+  background-size: contain;
   border: 1px solid #ddd;
   border-radius: 8px;
   display: flex;
@@ -348,23 +344,13 @@
   animation: slideIn 0.5s ease-out;
 }
 
-
-
 /* Chatbot Messages Container */
 .chatbot-messages {
   padding: 10px;
   overflow-y: auto;
   flex: 1;
-}
-
-.chatbot-messages {
-  padding: 10px;
-  overflow-y: auto;
-  flex: 1;
-
-  /* Hide scrollbar for Chrome, Safari, and Edge */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .chatbot-messages::-webkit-scrollbar {
@@ -433,7 +419,7 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 250px;
+  width: 250px; /* Original width */
   background: #1b1522;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -450,3 +436,42 @@
   transform: scale(1.02);
 }
 
+/* Media Query for Mobile Responsiveness */
+@media (max-width: 768px) {
+  .menu-row {
+    flex-direction: column;
+  }
+  .menu-card {
+    flex: 1 1 100%;
+  }
+
+  /* Chatbot Adjustments for Mobile */
+  .chatbot-window {
+    width: 90%; /* Reduced to 90% of screen width */
+    max-height: 70vh; /* Scaled to 70% of viewport height */
+    right: 5%; /* Centered on mobile by adjusting right offset */
+    left: 5%; /* Added left offset for centering */
+  }
+
+  .chatbot-minimized-bar {
+    width: 150px; /* Reduced width for mobile */
+    right: 5%;
+    left: 5%; /* Centered on mobile */
+  }
+
+  .chatbot-buttons button {
+    font-size: 1.2em; /* Slightly reduced font size for buttons */
+    padding: 4px 8px; /* Adjusted padding for smaller screens */
+  }
+
+  .chatbot-footer {
+    flex-direction: column; /* Stack buttons vertically on mobile */
+    align-items: center;
+  }
+
+  .chatbot-close,
+  .chatbot-reset {
+    width: 100%; /* Full width buttons on mobile */
+    margin-bottom: 5px; /* Spacing between buttons */
+  }
+}
