@@ -1,0 +1,108 @@
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blurFade {
+  from {
+    filter: blur(10px);
+    opacity: 0.5;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.category-container {
+  animation: fadeIn 0.8s ease-in-out;
+  background: url("../../assets/bg.png") no-repeat center center;
+  background-size: cover;
+  margin: 0 auto;
+  padding: 20px;
+  color: var(--color-white);
+  font-family: var(--font-base);
+}
+
+.category-title {
+  text-align: center;
+  font-size: 2.3em;
+  margin-bottom: 30px;
+  color: var(--color-golden);
+  font-family: var(--font-base);
+}
+
+.category-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.category-card {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-red);
+  border: 2px solid var(--color-golden);
+  border-radius: 20px;
+  padding: 10px;
+  text-align: center;
+  transition: box-shadow 0.3s, transform 0.3s, background-color 0.3s;
+  cursor: pointer; /* Indicate clickable */
+}
+
+.category-card:hover {
+  box-shadow: 0 4px 12px rgba(220, 202, 135, 0.3);
+  transform: translateY(-5px);
+  background-color: rgba(220, 202, 135, 0.05);
+}
+
+.category-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+  animation: blurFade 0.5s ease-out forwards;
+  filter: blur(10px);
+  opacity: 0;
+}
+
+.category-image.loaded {
+  filter: none;
+  opacity: 1;
+}
+
+.category-card img {
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.category-card h3 {
+  font-size: 1.5em;
+  margin: 0;
+  color: var(--color-golden);
+  font-family: var(--font-base);
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .category-row {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .category-image {
+    display: none;
+  }
+  .category-card {
+    padding: 5px 10px;
+    border-radius: 15px;
+    width: 45%;
+    margin-bottom: 10px;
+  }
+  .category-card h3 {
+    font-size: 1.2em;
+  }
+}

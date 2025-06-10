@@ -14,11 +14,13 @@ import {
 } from "./container";
 import { Navbar } from "./components";
 import "./App.css";
+import Category from "./container/Category/Category";
 
 const App = () => (
   <div>
     <Navbar />
     <Header />
+    <Category/>
     <AboutUs />
     <SpecialMenu />
     <RegularMenu />

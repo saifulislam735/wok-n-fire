@@ -583,7 +583,7 @@ const RegularMenu = () => {
 
       <h1 className="menu-title">Menu</h1>
 
-      <div className="menu-row">
+      <div id='fries-and-chips' className="menu-row">
         <div className="menu-section">
           <h2 className="menu-section-title">Fries and Chips</h2>
           <div className="menu-items">
@@ -602,7 +602,7 @@ const RegularMenu = () => {
           </div>
         </div>
 
-        <div className="menu-section">
+        <div id='corn-dog' className="menu-section">
           <h2 className="menu-section-title">Corn Dog</h2>
           <div className="menu-items">
             {menuData.cornDog.map((item, index) => {
@@ -621,7 +621,7 @@ const RegularMenu = () => {
         </div>
       </div>
       <div className="menu-row">
-        <div className="menu-section">
+        <div id='curry' className="menu-section">
           <h2 className="menu-section-title">Special Fire Curry</h2>
           <div className="menu-items">
             {menuData.curry.map((item, index) => {
@@ -639,7 +639,7 @@ const RegularMenu = () => {
           </div>
         </div>
 
-        <div className="menu-section">
+        <div id="stir-fry" className="menu-section">
           <h2 className="menu-section-title">Stir Fry</h2>
           <div className="menu-items">
             {menuData.stirFry.map((item, index) => {
@@ -659,7 +659,7 @@ const RegularMenu = () => {
       </div>
 
       <div className="menu-row-3">
-        <div className="menu-section">
+        <div id='sauces' className="menu-section">
           <h2 className="menu-section-title">Choose Your Sauce</h2>
           <div className="menu-items">
             {menuData.sauces.map((item, index) => {
@@ -679,7 +679,7 @@ const RegularMenu = () => {
       </div>
 
       <div className="menu-row">
-        <div className="menu-section">
+        <div id='drinks' className="menu-section">
           <h2 className="menu-section-title">Drinks</h2>
           <div className="menu-items">
             {menuData.drinks.map((item, index) => {
@@ -699,7 +699,7 @@ const RegularMenu = () => {
       </div>
 
       {/* Build Your Own Meal (Outside Chatbot UI) */}
-      <div className="menu-section-2">
+      <div id='meal-deal' className="menu-section-2">
         <h2 className="menu-section-title">Build Your Own Meal (1+2+3)</h2>
         <div className="menu-build-your-own">
           {/* Step 1 */}
