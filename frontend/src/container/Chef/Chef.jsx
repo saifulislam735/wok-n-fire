@@ -8,8 +8,10 @@ const Chef = () => (
   <div className="app__bg app__wrapper section__padding">
     <div className="app__wrapper_img app__wrapper_img-reverse">
       {/* <img src={images.chef} alt="chef" /> */}
-      <img src={images.gal15} alt="chef" />
+      <img src="https://res.cloudinary.com/dgtomvt9x/image/upload/v1749768047/gal15_dstgcx.jpg" alt="chef" />
+      {/* <img src={images.gal15} alt="chef" /> */}
     </div>
+    
 
     <div className="app__wrapper_info">
       <SubHeading title="Chef's Word" />

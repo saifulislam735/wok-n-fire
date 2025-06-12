@@ -10,6 +10,7 @@ import logo from '../assets/logo.png';
 import menu from '../assets/menu.png';
 import overlaybg from '../assets/overlaybg.png';
 import spoon from '../assets/spoon.svg';
+// import spoon from '../assets/spoon.svg';
 import welcome from '../assets/welcome.png';
 import wokLogo from '../assets/wokLogo.jpg';
 import IMG from '../assets/IMG_7606.JPG';

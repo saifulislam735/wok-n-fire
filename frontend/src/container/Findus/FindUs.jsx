@@ -49,7 +49,8 @@ const FindUs = () => (
       </button> */}
     </div>
     <div className="app__wrapper_img">
-      <img src={images.gal12} alt="findus" />
+      {/* <img src={images.gal12} alt="findus" /> */}
+      <img src="https://res.cloudinary.com/dgtomvt9x/image/upload/v1749767968/gal12_gsrpyy.jpg" alt="findus" />
     </div>
   </div>
 );

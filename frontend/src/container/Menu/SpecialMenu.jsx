@@ -27,7 +27,8 @@ const SpecialMenu = () => (
       </div>
 
       <div className="app__specialMenu-menu_img">
-        <img src={images.gal11} alt="menu img" />
+        <img src="https://res.cloudinary.com/dgtomvt9x/image/upload/v1749767998/gal11_j7yijo.jpg" alt="menu img" />
+        {/* <img src={images.gal11} alt="menu img" /> */}
       </div>
 
       <div className="app__specialMenu-menu_cocktails flex__center">

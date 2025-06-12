@@ -3,8 +3,11 @@ import { BsFillPlayFill, BsPauseFill } from "react-icons/bs";
 import "./Intro.css";
 
 const videoSources = [
-  "/media/video4.mp4", // First video from public/media
+  "https://res.cloudinary.com/dgtomvt9x/video/upload/v1749767908/video4_al3sz8.mp4", // First video from public/media
 ];
+// const videoSources = [
+//   "/media/video4.mp4", // First video from public/media
+// ];
 
 const Intro = () => {
   const [playVideo, setPlayVideo] = useState(false);

@@ -9,7 +9,8 @@
 }
 
 .app__bg {
-  background: url("./assets/bg.png");
+  background: url("https://res.cloudinary.com/dgtomvt9x/image/upload/v1749768142/bg_tpb1rx.png");
+  /* background: url("./assets/bg.png"); */
   background-position: center;
   background-size: cover;
   background-repeat: repeat;

@@ -3,10 +3,15 @@ import { SubHeading } from "../../components";
 import "./Header.css";
 
 const videoSources = [
-  "/media/video1.mp4",
-  "/media/video2.mov",
-  "/media/video3.mp4"
+  "https://res.cloudinary.com/dgtomvt9x/video/upload/v1749766861/video1_id9heu.mp4",
+  "https://res.cloudinary.com/dgtomvt9x/video/upload/v1749766883/video2_sqozev.mov",
+  "https://res.cloudinary.com/dgtomvt9x/video/upload/v1749766849/video3_meztu2.mp4"
 ];
+// const videoSources = [
+//   "/media/video1.mp4",
+//   "/media/video2.mov",
+//   "/media/video3.mp4"
+// ];
 
 const Header = () => {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
