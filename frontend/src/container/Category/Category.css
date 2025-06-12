@@ -16,7 +16,8 @@
 
 .category-container {
   animation: fadeIn 0.8s ease-in-out;
-  background: url("../../assets/bg.png") no-repeat center center;
+  background: url("https://res.cloudinary.com/dgtomvt9x/image/upload/v1749768142/bg_tpb1rx.png") no-repeat center center;
+  /* background: url("../../assets/bg.png") no-repeat center center; */
   background-size: cover;
   margin: 0 auto;
   padding: 20px 5%; /* Consistent with navbar and header padding */
