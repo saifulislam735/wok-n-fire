@@ -3,7 +3,7 @@ import './Category.css'
 const Category = () => {
 
     const categories = [
-        { id: 'fries-and-chips', name: 'Fries And Chips', image: 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg' },
+        { id: 'fries-and-chips', name: 'Fries & Chips', image: 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg' },
         { id: 'corn-dog', name: 'Corn Dog', image: 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg' },
         { id: 'drinks', name: 'Drinks', image: 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg' },
         { id: 'stir-fry', name: 'Stir Fry', image: 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg' },

@@ -537,7 +537,10 @@ const RegularMenu = () => {
   // ---------------------------
   return (
     <div className="menu-container">
-      {/* Chatbot Window or Minimized Bar */}
+
+      {/* CHATBOT Paused */}
+
+      {/* Chatbot Window or Minimized Bar
       {!isMinimized ? (
         <div className="chatbot-window">
           <div className="chatbot-messages">
@@ -557,7 +560,6 @@ const RegularMenu = () => {
           </div>
 
           <div className="chatbot-footer">
-            {/* NEW Reset button */}
             <button
               className="chatbot-reset"
               onClick={resetChat}
@@ -566,7 +568,6 @@ const RegularMenu = () => {
               Reset
             </button>
 
-            {/* Minimize Chat button */}
             <button
               className="chatbot-close"
               onClick={() => setIsMinimized(true)}
@@ -579,7 +580,7 @@ const RegularMenu = () => {
         <div className="chatbot-minimized-bar" onClick={() => setIsMinimized(false)}>
           <p>Chat minimized — click to open</p>
         </div>
-      )}
+      )} */}
 
       <h1 className="menu-title">Menu</h1>
 

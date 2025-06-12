@@ -11,6 +11,7 @@ import {
   //Laurels,
   SpecialMenu,
   RegularMenu,
+  Laurels,
 } from "./container";
 import { Navbar } from "./components";
 import "./App.css";

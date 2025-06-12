@@ -1,55 +1,158 @@
 .app__header {
   background-color: var(--color-red);
   display: flex;
+  flex-direction: row; /* Default to row for desktop */
   align-items: center;
   justify-content: space-between;
-  height: 70vh; 
+  min-height: 70vh; /* Use min-height for flexibility */
   padding: 0 5%;
+  gap: 2rem; /* Add spacing between elements */
+  transition: all 0.3s ease; /* Smooth transitions for responsive changes */
 } 
+
 .app__header h1 {
-  font-size: 1.5em;
+  font-size: 2.5rem; /* Slightly larger for emphasis */
   color: var(--color-golden);
   font-family: var(--font-alt);
+  margin-bottom: 1rem;
 }
 
 .app__wrapper_info {
   flex: 0 0 35%;
   max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: fadeIn 1s ease-in; /* Subtle fade-in for text */
 }
 
 .app__video {
   flex: 0 0 65%;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  overflow: hidden; /* Ensure no overflow */
+  border-radius: 10px; /* Rounded corners for visual appeal */
 }
 
 .app__video video {
   width: 100%;
   height: auto;
   max-height: 60vh;
-  object-fit: contain;
+  object-fit: contain; /* Use contain to show full video without cropping */
+  border-radius: 10px; /* Match container rounding */
+  transition: transform 0.3s ease; /* Smooth scaling on hover */
 }
 
-/* Video Overlay */
+.app__video video:hover {
+  transform: scale(1.02); /* Subtle zoom effect on hover */
+}
+
+/* Video Overlay (Optional - Kept for potential future use) */
 .app__video-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(210,9,28,1.000);
+  background: rgba(210, 9, 28, 0.5); /* Slightly transparent for subtlety */
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: opacity 0.3s ease;
 }
 
-/* Play/Pause Button */
+/* Play/Pause Button (Optional - Kept for future use) */
 .app__video-overlay_circle {
-  width: 80px;
-  height: 80px;
+  width: 60px; /* Slightly smaller for mobile */
+  height: 60px;
   border-radius: 50%;
-  border: 1px solid var(--color-golden);
+  border: 2px solid var(--color-golden);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.app__video-overlay_circle:hover {
+  transform: scale(1.1); /* Subtle hover effect */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tablet and Mobile Responsiveness */
+@media screen and (max-width: 1024px) {
+  .app__header {
+    flex-direction: column; /* Stack vertically on smaller screens */
+    min-height: auto; /* Allow content to dictate height */
+    padding: 2rem 5%;
+  }
+
+  .app__wrapper_info {
+    flex: 1;
+    max-width: 100%; /* Full width on smaller screens */
+    text-align: center; /* Center text for better mobile look */
+    margin-bottom: 2rem;
+  }
+
+  .app__header h1 {
+    font-size: 2rem; /* Slightly smaller for tablets */
+  }
+
+  .app__video {
+    flex: 1;
+    max-width: 100%; /* Full width video */
+  }
+
+  .app__video video {
+    max-height: 50vh; /* Adjust video height for tablets */
+    object-fit: cover; /* Retain cover for mobile to fill space */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .app__header h1 {
+    font-size: 1.8rem; /* Smaller for mobile */
+  }
+
+  .app__wrapper_info {
+    padding: 0 1rem; /* Add padding for narrow screens */
+  }
+
+  .app__video video {
+    max-height: 40vh; /* Further reduce video height for mobile */
+  }
+
+  .custom__button {
+    padding: 0.8rem 1.5rem; /* Smaller button for mobile */
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .app__header {
+    padding: 1rem; /* Minimal padding for very small screens */
+  }
+
+  .app__header h1 {
+    font-size: 1.5rem; /* Smallest for tiny screens */
+  }
+
+  .app__video video {
+    max-height: 35vh; /* Optimize for small screens */
+  }
+
+  .app__video-overlay_circle {
+    width: 50px; /* Smaller button for mobile */
+    height: 50px;
+  }
 }
