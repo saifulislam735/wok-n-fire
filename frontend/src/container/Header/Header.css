@@ -1,19 +1,19 @@
 .app__header {
   background-color: var(--color-red);
   display: flex;
-  flex-direction: row; /* Default to row for desktop */
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  min-height: 70vh; /* Use min-height for flexibility */
+  min-height: 70vh;
   padding: 0 5%;
-  gap: 2rem; /* Add spacing between elements */
-  transition: all 0.3s ease; /* Smooth transitions for responsive changes */
-} 
+  gap: 2rem;
+  transition: all 0.3s ease;
+}
 
 .app__header h1 {
-  font-size: 2.5rem; /* Slightly larger for emphasis */
+  font-size: 2.5rem;
   color: var(--color-golden);
-  font-family: var(--font-alt);
+  font-family: var(--font-base);
   margin-bottom: 1rem;
 }
 
@@ -23,7 +23,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  animation: fadeIn 1s ease-in; /* Subtle fade-in for text */
+  animation: fadeIn 1s ease-in;
 }
 
 .app__video {
@@ -32,28 +32,31 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  overflow: hidden; /* Ensure no overflow */
-  border-radius: 10px; /* Rounded corners for visual appeal */
+  overflow: hidden;
+  border-radius: 10px;
+  aspect-ratio: 1640 / 750; /* Matches video dimensions (1640x750) */
+  max-height: 60vh;
+  width: 100%;
+  background-color: var(--color-red); /* Blends gaps during transitions */
 }
 
 .app__video video {
   width: 100%;
-  height: auto;
-  max-height: 60vh;
-  object-fit: contain; /* Use contain to show full video without cropping */
-  border-radius: 10px; /* Match container rounding */
-  transition: transform 0.3s ease; /* Smooth scaling on hover */
+  height: 100%;
+  object-fit: contain; /* Ensures full video is visible without cropping */
+  border-radius: 10px;
+  transition: transform 0.3s ease;
 }
 
 .app__video video:hover {
-  transform: scale(1.02); /* Subtle zoom effect on hover */
+  transform: scale(1.02);
 }
 
 /* Video Overlay (Optional - Kept for potential future use) */
 .app__video-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(210, 9, 28, 0.5); /* Slightly transparent for subtlety */
+  background: rgba(210, 9, 28, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,7 +65,7 @@
 
 /* Play/Pause Button (Optional - Kept for future use) */
 .app__video-overlay_circle {
-  width: 60px; /* Slightly smaller for mobile */
+  width: 60px;
   height: 60px;
   border-radius: 50%;
   border: 2px solid var(--color-golden);
@@ -74,7 +77,7 @@
 }
 
 .app__video-overlay_circle:hover {
-  transform: scale(1.1); /* Subtle hover effect */
+  transform: scale(1.1);
 }
 
 /* Fade-in animation */
@@ -92,67 +95,83 @@
 /* Tablet and Mobile Responsiveness */
 @media screen and (max-width: 1024px) {
   .app__header {
-    flex-direction: column; /* Stack vertically on smaller screens */
-    min-height: auto; /* Allow content to dictate height */
-    padding: 2rem 5%;
+    flex-direction: column;
+    min-height: auto;
+    /* CHANGED: Reduced padding for better mobile spacing */
+    padding: 1.5rem 4%; /* Previously 2rem 5% */
   }
 
   .app__wrapper_info {
     flex: 1;
-    max-width: 100%; /* Full width on smaller screens */
-    text-align: center; /* Center text for better mobile look */
-    margin-bottom: 2rem;
+    max-width: 100%;
+    text-align: center;
+    /* CHANGED: Slightly reduced margin for compact layout */
+    margin-bottom: 1.5rem; /* Previously 2rem */
   }
 
   .app__header h1 {
-    font-size: 2rem; /* Slightly smaller for tablets */
+    font-size: 2rem;
   }
 
   .app__video {
     flex: 1;
-    max-width: 100%; /* Full width video */
+    max-width: 100%;
+    /* CHANGED: Increased max-height for better visibility on tablets */
+    max-height: 55vh; /* Previously 50vh */
   }
 
   .app__video video {
-    max-height: 50vh; /* Adjust video height for tablets */
-    object-fit: cover; /* Retain cover for mobile to fill space */
+    max-height: 55vh;
+    object-fit: contain;
   }
 }
 
 @media screen and (max-width: 768px) {
   .app__header h1 {
-    font-size: 1.8rem; /* Smaller for mobile */
+    font-size: 1.8rem;
   }
 
   .app__wrapper_info {
-    padding: 0 1rem; /* Add padding for narrow screens */
+    /* CHANGED: Reduced padding for narrower screens */
+    padding: 0 0.5rem; /* Previously 0 1rem */
+  }
+
+  .app__video {
+    /* CHANGED: Increased max-height for better mobile prominence */
+    max-height: 50vh; /* Previously 40vh */
   }
 
   .app__video video {
-    max-height: 40vh; /* Further reduce video height for mobile */
+    max-height: 50vh;
   }
 
   .custom__button {
-    padding: 0.8rem 1.5rem; /* Smaller button for mobile */
+    padding: 0.8rem 1.5rem;
     font-size: 0.9rem;
   }
 }
 
 @media screen and (max-width: 480px) {
   .app__header {
-    padding: 1rem; /* Minimal padding for very small screens */
+    /* CHANGED: Further reduced padding for very small screens */
+    padding: 0.8rem; /* Previously 1rem */
   }
 
   .app__header h1 {
-    font-size: 1.5rem; /* Smallest for tiny screens */
+    font-size: 1.5rem;
+  }
+
+  .app__video {
+    /* CHANGED: Increased max-height to make video more prominent */
+    max-height: 45vh; /* Previously 35vh */
   }
 
   .app__video video {
-    max-height: 35vh; /* Optimize for small screens */
+    max-height: 45vh;
   }
 
   .app__video-overlay_circle {
-    width: 50px; /* Smaller button for mobile */
+    width: 50px;
     height: 50px;
   }
 }

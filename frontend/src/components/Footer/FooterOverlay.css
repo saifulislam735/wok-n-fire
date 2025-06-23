@@ -1,18 +1,22 @@
 .app__footerOverlay {
   width: 100%;
-  height: 100%;
-  z-index: -1;
-
+  height: 80%; /* Reduced to 80% to leave space for Newsletter and copyright */
+  z-index: -1; /* Keep behind content */
   display: flex;
   flex-direction: column;
   position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .app__footerOverlay-black {
-  height: 0%;
+  height: 10%;
   background: var(--color-black);
 }
 
 .app__footerOverlay-img {
-  height: 75%;
+  height: 90%; /* Adjusted to 90% of the overlay's 80%, leaving room */
+  background: var(--color-bg); /* Assuming app__bg is a gradient or image class */
+  background-size: cover;
+  background-position: center;
 }

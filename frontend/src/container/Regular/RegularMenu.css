@@ -1,27 +1,47 @@
-/* New & Improved RegularMenu.css */
-
-/* Fade-in animation for the entire menu container */
+/* -----------------------------
+ * Animations
+ * -----------------------------
+ * Define fade-in and slide-in animations for smooth UI transitions.
+ */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Slide-in animation for the chatbot panel */
 @keyframes slideIn {
-  from { opacity: 0; transform: translateY(50px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Container styling */
+/* -----------------------------
+ * Global Styles
+ * -----------------------------
+ * Set up the container with background, padding, and font styles.
+ */
 .menu-container {
   animation: fadeIn 0.8s ease-in-out;
   background: url("https://res.cloudinary.com/dgtomvt9x/image/upload/v1749768142/bg_tpb1rx.png") no-repeat center center;
-  /* background: url("../../assets/bg.png") no-repeat center center; */
   background-size: cover;
   margin: 0 auto;
   padding: 20px;
   color: var(--color-white);
   font-family: var(--font-base);
+  padding-left: 100px;
+  padding-right: 100px;
 }
 
 .menu-title {
@@ -32,15 +52,13 @@
   color: var(--color-golden);
 }
 
-/* Menu Layout */
-.menu-row {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 40px;
-}
-
+/* -----------------------------
+ * Menu Layout
+ * -----------------------------
+ * Structure sections and items for the menu display.
+ */
 .menu-section {
-  flex: 1;
+  margin-bottom: 20px;
 }
 
 .menu-section-title {
@@ -52,64 +70,154 @@
   color: var(--color-golden);
 }
 
-/* Cards container */
+/* -----------------------------
+ * Menu Items Grid
+ * -----------------------------
+ * Use flexbox for responsive card layout with centering on mobile.
+ */
 .menu-items {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
 }
 
-/* Menu Card */
+/* -----------------------------
+ * Menu Card Layout
+ * -----------------------------
+ * Use grid to enforce consistent positioning of elements.
+ */
 .menu-card {
-  flex: 1 1 calc(50% - 10px);
-  background-color: var(--color-red);
-  border: 1px solid var(--color-golden);
+  flex: 1 1 calc(33.33% - 10px);
+  min-width: 200px;
+  max-width: 300px;
+  aspect-ratio: 1 / 1;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ddd;
   padding: 10px;
   box-sizing: border-box;
-  text-align: center;
   border-radius: 8px;
-  transition: box-shadow 0.3s, transform 0.3s, background-color 0.3s;
+  transition: box-shadow 0.3s, transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .menu-card:hover {
-  box-shadow: 0 4px 12px rgba(220, 202, 135, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transform: translateY(-5px);
-  background-color: rgba(220, 202, 135, 0.05);
 }
 
-.menu-card h3 {
-  font-size: 1.9em;
-  margin-bottom: 10px;
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex-grow: 1;
+}
+
+.card-title {
+  font-size: 1.6em;
+  margin: 0;
   font-family: var(--font-base);
-  color: var(--color-golden);
+  color: #333;
+  text-align: center;
+  flex-shrink: 0;
 }
 
-.menu-card p {
-  font-size: 1.3em;
-  margin-bottom: 15px;
+.card-price {
+  font-size: 1.5em;
+  color: #a00;
+  margin: 0;
   font-family: var(--font-alt);
-  color: var(--color-white);
+  text-align: center;
+  flex-shrink: 0;
 }
 
-/* Card button styling */
-.menu-card button {
-  background-color: var(--color-crimson);
-  color: var(--color-red);
+.card-ingredients {
+  font-size: 1em;
+  color: #666;
+  margin: 0;
+  font-family: var(--font-alt);
+  text-align: center;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.card-button {
+  background-color: var(--color-red);
+  color: #fff;
   border: none;
-  padding: 10px 15px;
+  padding: 8px 15px;
   cursor: pointer;
   border-radius: 5px;
   font-family: var(--font-base);
   font-size: 1em;
   transition: background-color 0.3s, transform 0.3s;
+  width: 100%;
+  margin-top: 10px;
 }
 
-.menu-card button:hover {
-  background-color: var(--color-golden);
+.card-button:hover {
+  background-color: rgb(165, 7, 7);
   transform: scale(1.05);
 }
 
-/* Add-to-Cart Button */
+/* -----------------------------
+ * Image Styling
+ * -----------------------------
+ * Ensure full image display with loading state and fallback.
+ */
+.menu-card img {
+  width: 100%;
+  height: 150px;
+  max-height: 150px;
+  object-fit: contain;
+  border-radius: 5px 5px 0 0;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+.menu-card img:loaded {
+  animation: none;
+}
+
+/* -----------------------------
+ * Expand Button
+ * -----------------------------
+ * Style for the "See More" and "See Less" buttons, enhanced for mobile visibility.
+ */
+.expand-button {
+  display: block;
+  width: 100%;
+  background: linear-gradient(135deg, #a00, #800);
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1.3em;
+  cursor: pointer;
+  border-radius: 25px;
+  font-family: var(--font-base);
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  margin-top: 15px;
+}
+
+.expand-button:hover {
+  background: linear-gradient(135deg, #800, #600);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* -----------------------------
+ * Add-to-Cart Button
+ * -----------------------------
+ * Style for the checkout button.
+ */
 .add-to-cart-button {
   display: block;
   width: 100%;
@@ -130,19 +238,14 @@
   transform: scale(1.03);
 }
 
-@media (max-width: 768px) {
-  .menu-row {
-    flex-direction: column;
-  }
-  .menu-card {
-    flex: 1 1 100%;
-  }
-}
-
-/* Build Your Own Meal Section */
+/* -----------------------------
+ * Build Your Own Meal Section
+ * -----------------------------
+ * Styling for the customizable meal builder.
+ */
 .menu-section-2 {
   font-size: medium;
-  background-color: rgba(210,9,28,1.000);
+  background-color: rgba(210, 9, 28, 1.000);
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 40px;
@@ -219,7 +322,6 @@
   cursor: pointer;
 }
 
-/* Add Meal Button */
 .add-meal-button {
   background-color: var(--color-black);
   color: var(--color-golden);
@@ -244,9 +346,13 @@
   transform: scale(1.05);
 }
 
-/* Selected Items Display */
+/* -----------------------------
+ * Selected Items Display
+ * -----------------------------
+ * Show the user's selected items and total.
+ */
 .selected-items {
-  background-color: rgba(210,9,28,1.000);
+  background-color: rgba(210, 9, 28, 1.000);
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 30px;
@@ -261,7 +367,7 @@
   padding-bottom: 5px;
 }
 
-.selected-items-list {
+.menu-items-list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -303,35 +409,17 @@
   color: var(--color-white);
 }
 
-/* Header with Chatbot Icon */
-.menu-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Chatbot Icon */
-.chatbot-icon {
-  font-size: 2.5em;
-  cursor: pointer;
-  padding: 10px;
-  border: 4px solid #ccc;
-  border-radius: 50%;
-  background: #5c8ca1;
-  transition: background 0.3s, transform 0.3s;
-}
-
-.chatbot-icon:hover {
-  background: #6869b3;
-  transform: scale(1.05);
-}
-
-/* Chatbot Window */
-.chatbot-window {
+/* -----------------------------
+ * Chatbot Styles (Commented out)
+ * -----------------------------
+ * Define the chatbot window, messages, and buttons with responsive adjustments.
+ * Currently disabled but preserved for future use.
+ */
+/* .chatbot-window {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 600px; /* Original width */
+  width: 600px;
   max-height: 500px;
   background: linear-gradient(rgba(210,9,28,0.4), rgba(0, 0, 0, 0.4)), 
               url("../../assets/CHATBOX-01.png") no-repeat center center;
@@ -345,7 +433,6 @@
   animation: slideIn 0.5s ease-out;
 }
 
-/* Chatbot Messages Container */
 .chatbot-messages {
   padding: 10px;
   overflow-y: auto;
@@ -357,11 +444,11 @@
 .chatbot-messages::-webkit-scrollbar {
   display: none;
 }
+
 .chatbot-message p {
   margin: 0 0 10px;
 }
 
-/* Chatbot Buttons */
 .chatbot-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -378,12 +465,12 @@
   cursor: pointer;
   transition: background 0.3s, transform 0.3s;
 }
+
 .chatbot-buttons button:hover {
   background: #cb3232;
   transform: scale(1.04);
 }
 
-/* Chatbot Footer (Close Button) */
 .chatbot-footer {
   padding: 10px;
   border-top: 1px solid #ddd;
@@ -400,6 +487,7 @@
   cursor: pointer;
   transition: background 0.3s, transform 0.3s;
 }
+
 .chatbot-close:hover {
   background: #bbb;
   transform: scale(1.04);
@@ -415,12 +503,11 @@
   transition: background 0.3s, transform 0.3s;
 }
 
-/* Minimizer bar when the chatbot is minimized */
 .chatbot-minimized-bar {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 250px; /* Original width */
+  width: 250px;
   background: #1b1522;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -435,44 +522,65 @@
 .chatbot-minimized-bar:hover {
   background-color: rgba(210,9,28,0.5);
   transform: scale(1.02);
-}
+} */
 
-/* Media Query for Mobile Responsiveness */
+/* -----------------------------
+ * Media Queries
+ * -----------------------------
+ * Handle responsiveness for different screen sizes.
+ */
 @media (max-width: 768px) {
-  .menu-row {
-    flex-direction: column;
+  .menu-items {
+    justify-content: center;
+    /* Center cards on mobile */
   }
+
+  .menu-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+  }
+
   .menu-card {
     flex: 1 1 100%;
+    max-width: 250px;
+    /* Limit max width for better centering */
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .menu-card {
+    flex: 1 1 calc(50% - 10px);
   }
 
-  /* Chatbot Adjustments for Mobile */
-  .chatbot-window {
-    width: 90%; /* Reduced to 90% of screen width */
-    max-height: 70vh; /* Scaled to 70% of viewport height */
-    right: 5%; /* Centered on mobile by adjusting right offset */
-    left: 5%; /* Added left offset for centering */
+}
+
+@media (max-width: 480px) {
+  .card-price {
+    font-size: 1.2em;
   }
 
-  .chatbot-minimized-bar {
-    width: 150px; /* Reduced width for mobile */
-    right: 5%;
-    left: 5%; /* Centered on mobile */
+  .card-button {
+    padding: 6px 12px;
   }
 
-  .chatbot-buttons button {
-    font-size: 1.2em; /* Slightly reduced font size for buttons */
-    padding: 4px 8px; /* Adjusted padding for smaller screens */
+  .card-title {
+    font-size: 1.4em;
   }
 
-  .chatbot-footer {
-    flex-direction: column; /* Stack buttons vertically on mobile */
-    align-items: center;
+  .menu-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
   }
 
-  .chatbot-close,
-  .chatbot-reset {
-    width: 100%; /* Full width buttons on mobile */
-    margin-bottom: 5px; /* Spacing between buttons */
+  100% {
+    background-position: -200% 0;
   }
 }

@@ -1,85 +1,166 @@
+:root {
+  --menu-section-gap: 2rem;
+  --menu-padding: 1.5rem;
+  --menu-border-radius: 15px;
+  --menu-img-height: 500px;
+  --transition-ease: all 0.3s ease;
+}
+
 .app__specialMenu {
+  display: flex;
   flex-direction: column;
+  align-items: center;
   background: var(--color-red);
+  padding: clamp(2rem, 5vw, 4rem) 1rem;
 }
 
 .app__specialMenu-title {
-  margin-bottom: 2rem;
   text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeIn 0.8s ease-out;
 }
 
 .app__specialMenu-menu {
-  width: 100%;
-  margin: 2rem 0;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start;
-  flex-direction: row;
+  gap: var(--menu-section-gap);
+  width: 100%;
+  margin: 3rem 0;
 }
 
-.app__specialMenu-menu_heading {
+.app__specialMenu-menu__heading {
   font-family: var(--font-base);
   font-weight: 600;
-  font-size: 45px;
-  line-height: 58.5px;
+  font-size: clamp(35px, 5vw, 45px);
+  line-height: 1.3;
   letter-spacing: 0.04em;
   color: var(--color-white);
+  text-align: center;
+  margin-bottom: 1rem;
+  position: relative;
 }
 
-.app__specialMenu-menu_wine,
-.app__specialMenu-menu_cocktails {
+.app__specialMenu-menu__heading::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--color-white);
+  margin: 0.5rem auto;
+  opacity: 0.8;
+}
+
+.app__specialMenu-menu__wine,
+.app__specialMenu-menu__cocktails {
   flex: 1;
+  min-width: 280px;
+  max-width: 450px;
+  padding: var(--menu-padding);
+  background: rgba(210, 9, 28, 0.8);
+  border-radius: var(--menu-border-radius);
+  transition: var(--transition-ease);
+}
+
+.app__specialMenu-menu__wine:hover,
+.app__specialMenu-menu__cocktails:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.app__specialMenu-menu__img {
+  flex: 0 0 clamp(300px, 40vw, 450px);
+  border-radius: var(--menu-border-radius);
+  overflow: hidden;
+  margin: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Vertically centers the image */
+}
+
+.app__specialMenu-menu__img img {
   width: 100%;
-  flex-direction: column;
+  height: var(--menu-img-height);
+  object-fit: cover;
+  transition: var(--transition-ease);
 }
 
-.app__specialMenu-menu_img {
-  width: 20px;
-  margin: 0 2rem;
+.app__specialMenu-menu__img:hover img {
+  transform: scale(1.03);
 }
 
-.app__specialMenu-menu_img img {
-  width: 100%;
-  height: 100vh; 
-  object-fit:cover; 
-}
-
-
-.app__specialMenu_menu_items {
+.app__specialMenu-menu__items {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
   display: flex;
   flex-direction: column;
-  margin: 2rem 0;
-  width: 100%;
+  gap: 1rem;
 }
 
-@media screen and (max-width: 2000px) {
-  .app__specialMenu-menu_img {
-    width: 650px;
-  }
-  /* .app__specialMenu-menu_img img {
-    height: 820px;
-  } */
+.app__specialMenu-button {
+  margin-top: 2rem;
 }
 
+.custom__button {
+  background: var(--color-white);
+  color: var(--color-red);
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  border: none;
+  font-family: var(--font-base);
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  transition: var(--transition-ease);
+}
+
+.custom__button:hover,
+.custom__button:focus {
+  background: var(--color-red);
+  color: var(--color-white);
+  border: 1px solid var(--color-white);
+  outline: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Design */
 @media screen and (max-width: 1150px) {
   .app__specialMenu-menu {
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    gap: 2rem;
   }
-
-  .app__specialMenu-menu_img {
-    margin: 3rem 0;
+  .app__specialMenu-menu__img {
+    margin: 1.5rem 0;
+    flex: 0 0 100%;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Vertically centers on tablet view */
   }
 }
 
 @media screen and (max-width: 650px) {
-  .app__specialMenu-menu_img {
-    width: 100%;
+  :root {
+    --menu-img-height: 350px;
   }
-
-  .app__specialMenu-menu_heading {
-    font-size: 35px;
-    line-height: 48.5px;
+  .app__specialMenu {
+    padding: 2rem 0.5rem;
+  }
+  .app__specialMenu-menu__wine,
+  .app__specialMenu-menu__cocktails {
+    min-width: 100%;
+    padding: 1rem;
+  }
+  .app__specialMenu-menu__img {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Vertically centers on mobile view */
   }
 }

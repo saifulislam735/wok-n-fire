@@ -1,74 +1,103 @@
-import React from "react";
-import { FiFacebook, FiTwitter, FiInstagram } from "react-icons/fi";
+import React from 'react';
+import { FiFacebook, FiTwitter, FiInstagram } from 'react-icons/fi';
+import { Newsletter } from '../../components';
+import './Footer.css';
 
-import { images } from "../../constants";
-import { FooterOverlay, Newsletter } from "../../components";
-import "./Footer.css";
+// Structured data for locations and working hours
+const locations = [
+  {
+    name: 'Vauxhall Bridge Rd',
+    address: '326 Vauxhall Bridge Rd, London SW1V 1AA',
+    hours: [
+      { days: 'Monday-Friday', time: '11:00 AM - 01:00 AM' },
+      { days: 'Sunday', time: '11:00 AM - 11:00 PM' },
+    ],
+  },
+  {
+    name: 'Haymarket',
+    address: '33 Haymarket, London SW1Y 4HA',
+    hours: [
+      { days: 'Sunday-Thursday', time: '11:00 AM - 11:00 PM' },
+      { days: 'Friday-Saturday', time: '11:00 AM - 02:00 AM' },
+    ],
+  },
+  {
+    name: 'Camden High St',
+    address: '19 Camden High St, London NW1 7JE in Camden Town',
+    hours: [
+      { days: 'Monday-Sunday', time: '10:00 AM - 12:00 AM' },
+    ],
+  },
+];
 
-const Footer = () => (
-  <div className="app__footer section__padding">
-    <FooterOverlay />
-    <Newsletter />
+const Footer = () => {
+  const currentYear = new Date().getFullYear();
 
-    <div className="app__footer-links">
-      {/* <div className="app__footer-links_contact">
-        <h1 className="app__footer-headtext">Our Locations</h1>
-        <ul>
-        <li><p className="p__opensans">326 Vauxhall Bridge Rd, London SW1V 1AA</p></li>
-        <p className="p__opensans">33 Haymarket, London SW1Y 4HA</p>
-        <p className="p__opensans">19 Camden High St, London NW1 7JE in Camden Town</p>
-        </ul>
-      </div> */}
+  return (
+    <footer aria-labelledby="footer-heading">
+      <div className="footer">
+        <Newsletter /> {/* Social media section restored */}
 
-      <div className="app__footer-links_locations">
+        <div className="footer__links">
+          {/* Locations Section */}
+          <div className="footer__links_locations" role="region" aria-label="Our Locations">
+            <h1 className="app__footer-headtext footer__heading" id="footer-locations-heading">
+              Our Locations
+            </h1>
+            <ol className="footer__locations_list">
+              {locations.map((location, index) => (
+                <li key={index} className="location-item">
+                  <div className="location-item__header">
+                    <span className="location-item__icon" aria-hidden="true">📍</span>
+                    <p className="p__opensans location-item__address">{location.address}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
 
-        <h1 className="app__footer-headtext">Our Locations</h1>
-        <ol className="p__opensans" style={{listStyleType: 'decimal', paddingLeft: '1rem'}}>
-          <li><p className="p__opensans">326 Vauxhall Bridge Rd, London SW1V 1AA</p></li>
-          <li><p className="p__opensans">33 Haymarket, London SW1Y 4HA</p></li>
-          <li><p className="p__opensans">19 Camden High St, London NW1 7JE in Camden Town</p></li>
-        </ol>
-      </div>
+          {/* Logo Section */}
+          <div className="footer__links_logo" role="region" aria-label="Brand Information">
+            <h1 className="app__footer-headtext footer__heading" id="footer-logo-heading">
+              Wok & Fire
+            </h1>
+            <p className="p__opensans footer__quote">
+              "The best way to find yourself is to lose yourself in the service of others."
+            </p>
+          </div>
 
-      <div className="app__footer-links_logo">
-        {/* <img src={images.gericht} alt="footer_logo" /> */}
-        <h1 className="app__footer-headtext">Wok & Fire</h1>
-        <p className="p__opensans">
-          &quot;The best way to find yourself is to lose yourself in the service
-          of others.&quot;
-        </p>
-        <div className="app__footer-links_icons">
-          <FiFacebook />
-          <FiTwitter />
-          <FiInstagram />
+          {/* Working Hours Section */}
+          <div className="footer__links_work" role="region" aria-label="Working Hours">
+            <h1 className="app__footer-headtext footer__heading" id="footer-work-heading">
+              Working Hours
+            </h1>
+            <ol className="footer__hours_list">
+              {locations.map((location, index) => (
+                <li key={index} className="location-item">
+                  <div className="location-item__header">
+                    <span className="location-item__icon" aria-hidden="true">🕒</span>
+                    <p className="p__opensans location-item__name">{location.name}</p>
+                  </div>
+                  <ul className="location-hours">
+                    {location.hours.map((hour, idx) => (
+                      <li key={idx} className="p__opensans location-hours__item">
+                        {hour.days}: {hour.time}
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+        <div className="footer__copyright">
+          <a href="/" className="footer__copyright_link">
+            <p className="p__opensans">{currentYear} © Wok & Fire. All Rights Reserved.</p>
+          </a>
         </div>
       </div>
-
-      <div className="app__footer-links_work">
-        <h1 className="app__footer-headtext">Working Hours</h1>
-        <ol className="p__opensans" style={{listStyleType: 'none', paddingLeft: '1rem'}}>
-          <li className="location-item">
-            <p className="location-name">Vauxhall Bridge Rd</p>
-            <ul className="location-hours">
-              <li>Monday-Friday: 11:00 am - 01:00 am</li>
-              <li>Sunday: 11:00 am - 11:00 pm</li>
-            </ul>
-          </li>
-          <li className="location-item">
-            <p className="location-name">Haymarket</p>
-            <ul className="location-hours">
-              <li>Sunday-Thursday: 11:00 am - 11:00 pm</li>
-              <li>Friday-Saturday: 11:00 am - 02:00 am</li>
-            </ul>
-          </li>
-          
-        </ol>
-      </div>
-    </div>
-    <div className="footer__copyright">
-      <p className="p__opensans">2025 Wok & Fire. All Rights reserved.</p>
-    </div>
-  </div>
-);
+    </footer>
+  );
+};
 
 export default Footer;

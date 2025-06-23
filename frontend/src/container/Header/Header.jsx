@@ -32,12 +32,14 @@ const Header = () => {
         <SubHeading title="Chase the Flavor of Innovation" />
         <h1 className="app__header-h1">The Key To Fine Dining</h1>
         <p className="p__opensans" style={{ margin: "2rem 0", textTransform: "none" }}>
-          Elevate your culinary experience with dishes that redefine tradition. Crafted with the freshest ingredients, 
+          Elevate your culinary experience with dishes that redefine tradition. Crafted with the freshest ingredients,
           each bite is a testament to our passion for flavor. Discover the art of fine dining, where taste meets creativity.
         </p>
-        <button type="button" className="custom__button">
-          Explore Menu
-        </button>
+        <a href="#menu">
+          <button type="button" className="custom__button">
+            Explore Menu
+          </button>
+        </a>
       </div>
 
       {/* Right Side - Video Player (No Play/Pause Button) */}
